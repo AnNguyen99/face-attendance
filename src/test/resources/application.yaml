@@ -1,0 +1,57 @@
+spring:
+  profiles:
+    active: test
+
+---
+spring:
+  profiles: test
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:face_attendance;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  h2:
+    console:
+      enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+logging:
+  level:
+    root: error
+    vn.bzcom.abis: trace
+    com.kbjung: trace
+
+# files storage location (stores all files uploaded via REST API)
+storage:
+  location: ./uploads
+
+# properties for ErrorController
+server:
+  error:
+    whitelabel:
+      enabled: true
+    include-stacktrace: always
+
+security:
+  ignored: /**
+  basic:
+  enable: false
+
