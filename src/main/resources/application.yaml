@@ -48,4 +48,5 @@ server:
     whitelabel:
       enabled: true
     include-stacktrace: always
+  port: 8081
 
